@@ -10,19 +10,17 @@
 
 <section layout:fragment="conteudo">
 	<div class="container">
-		<form action="/titulos" method="POST" class="form-horizontal">
+		<form action="/titulos" method="POST" class="form-horizontal"
+			th:object="${titulo}">
 
-			<div class="alert alert-success alert-dismissible fade show"
-				role="alert" th:if="!${#strings.isEmpty(mensagem)}">
-				<span th:text="${mensagem}"></span>
-				<button type="button" class="btn-close" data-bs-dismiss="alert"
-					aria-label="Close"></button>
-			</div>
+			<div th:replace="Mensagem"></div>
+
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between">
 					<h5>Novo Titulo</h5>
-					<a href="/titulos" class="text-decoration-none">Voltar para Pesquisa</a>
+					<a href="/titulos" class="text-decoration-none">Voltar para
+						Pesquisa</a>
 				</div>
 
 				<div class="card-body">
@@ -30,7 +28,7 @@
 						<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="descricao"
-								name="descricao">
+								name="descricao" th:classappend="${#fields.hasErrors('descricao')} ? 'is-invalid'">
 						</div>
 					</div>
 
@@ -38,15 +36,15 @@
 						<label for="dataVencimeto" class="col-sm-2 col-form-label">Data
 							de Vencimento</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="dataVencimeto"
-								name="dataVencimento">
+							<input type="text" class="form-control" id="dataVencimento"
+								name="dataVencimento" th:classappend="${#fields.hasErrors('dataVencimento')} ? 'is-invalid'">
 						</div>
 					</div>
 
 					<div class="mb-3 row">
 						<label for="valor" class="col-sm-2 col-form-label">Valor</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="valor" name="valor">
+							<input type="text" class="form-control" id="valor" name="valor" th:classappend="${#fields.hasErrors('valor')} ? 'is-invalid'">
 						</div>
 					</div>
 

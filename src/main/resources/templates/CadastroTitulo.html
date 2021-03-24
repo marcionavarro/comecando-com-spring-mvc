@@ -28,7 +28,8 @@
 						<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="descricao"
-								name="descricao" th:classappend="${#fields.hasErrors('descricao')} ? 'is-invalid'">
+								th:field="*{descricao}"
+								th:classappend="${#fields.hasErrors('descricao')} ? 'is-invalid'">
 						</div>
 					</div>
 
@@ -37,14 +38,16 @@
 							de Vencimento</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="dataVencimento"
-								name="dataVencimento" th:classappend="${#fields.hasErrors('dataVencimento')} ? 'is-invalid'">
+								th:field="*{dataVencimento}"
+								th:classappend="${#fields.hasErrors('dataVencimento')} ? 'is-invalid'">
 						</div>
 					</div>
 
 					<div class="mb-3 row">
 						<label for="valor" class="col-sm-2 col-form-label">Valor</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="valor" name="valor" th:classappend="${#fields.hasErrors('valor')} ? 'is-invalid'">
+							<input type="text" class="form-control" id="valor" th:field="*{valor}"
+								th:classappend="${#fields.hasErrors('valor')} ? 'is-invalid'">
 						</div>
 					</div>
 

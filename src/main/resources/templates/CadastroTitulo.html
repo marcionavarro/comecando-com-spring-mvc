@@ -14,7 +14,8 @@
 			th:object="${titulo}">
 
 			<div th:replace="Mensagem"></div>
-
+			
+			<input type="hidden" th:field="*{codigo}"/>
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between">

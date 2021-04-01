@@ -11,6 +11,8 @@
 <section layout:fragment="conteudo">
 	<!--  <div class="container"></div> -->
 
+	<div th:replace="MensagemGeral"></div>
+	
 	<div class="card">
 
 		<div class="card-header d-flex justify-content-between">
@@ -41,11 +43,13 @@
 							th:text="${titulo.status.descricao}"
 							th:classappend="${titulo.pendente ? 'bg-danger' : 'bg-success'}">pendente</span>
 						</td>
-						<td class="text-center"><a class="btn btn-outline-primary btn-sm"
+						<td class="text-center"><a
+							class="btn btn-outline-primary btn-sm"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
 								class="bi bi-pencil-fill"></i>
-								
-								<a class="btn btn-outline-danger btn-sm" href=""> <i
+						</a> <a class="btn btn-outline-danger btn-sm" href=""
+							data-bs-toggle="modal" data-bs-target="#confirmacaoExclusaoModal"
+							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"> <i
 								class="bi bi-x-square-fill"></i>
 						</a></td>
 					</tr>
@@ -59,6 +63,9 @@
 				</tbody>
 			</table>
 		</div>
+
+		<div th:replace="DialogoConfirmacaoExclusao"></div>
+
 	</div>
 </section>
 

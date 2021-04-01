@@ -13,7 +13,8 @@
 		<form action="/titulos" method="POST" class="form-horizontal"
 			th:object="${titulo}">
 
-			<div th:replace="Mensagem"></div>
+			<div th:replace="MensagemGeral"></div>
+			<div th:replace="MensagemErro"></div>
 			
 			<input type="hidden" th:field="*{codigo}"/>
 

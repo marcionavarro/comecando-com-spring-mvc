@@ -39,9 +39,10 @@
 						<td th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-end" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center"><span class="badge"
-							th:text="${titulo.status.descricao}"
-							th:classappend="${titulo.pendente ? 'bg-danger' : 'bg-success'}">pendente</span>
+						<td class="text-center" th:attr="data-role=${titulo.codigo}">
+							<span class="badge" th:text="${titulo.status.descricao}"
+							th:classappend="${titulo.pendente ? 'bg-danger' : 'bg-success'}">
+								pendente </span>
 						</td>
 						<td class="text-center"><a
 							class="btn btn-outline-primary btn-sm"
@@ -57,10 +58,11 @@
 								data-bs-placement="top" title="Excluir"></i>
 
 						</a> <a class="btn btn-outline-success btn-sm js-atualizar-status"
+							th:attr="data-codigo=${titulo.codigo}"
 							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"
-							th:if="${titulo.pendente}"> <i
-								class="bi bi-check2-square" data-bs-toggle="tooltip"
-								data-bs-placement="top" title="Recebido"></i>
+							th:if="${titulo.pendente}"> <i class="bi bi-check2-square"
+								data-bs-toggle="tooltip" data-bs-placement="top"
+								title="Recebido"></i>
 						</a></td>
 					</tr>
 

@@ -12,7 +12,7 @@
 	<!--  <div class="container"></div> -->
 
 	<div th:replace="MensagemGeral"></div>
-	
+
 	<div class="card">
 
 		<div class="card-header d-flex justify-content-between">
@@ -46,11 +46,15 @@
 						<td class="text-center"><a
 							class="btn btn-outline-primary btn-sm"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
-								class="bi bi-pencil-fill"></i>
-						</a> <a class="btn btn-outline-danger btn-sm" href=""
+								class="bi bi-pencil-fill" data-bs-toggle="tooltip"
+								data-bs-placement="top" title="Editar"></i>
+
+						</a> <a class="btn btn-outline-danger btn-sm" title="Excluir"
 							data-bs-toggle="modal" data-bs-target="#confirmacaoExclusaoModal"
-							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"> <i
-								class="bi bi-x-square-fill"></i>
+							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
+								<!-- title="Excluir" rel="tooltip" data-bs-placement="top" --> <i
+								class="bi bi-x-square-fill" data-bs-toggle="tooltip"
+								data-bs-placement="top" title="Excluir"></i>
 						</a></td>
 					</tr>
 

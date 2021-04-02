@@ -16,3 +16,13 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 
 	modal.find('.modal-body span').html('Tem Certeza que deseja excluir o título <strong>' + descricaoTitulo + '</strong>?');
 });
+
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+/*$(function(){
+	$('[rel="tooltip"]').tooltip();
+});*/

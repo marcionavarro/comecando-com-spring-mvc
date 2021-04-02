@@ -49,12 +49,18 @@
 								class="bi bi-pencil-fill" data-bs-toggle="tooltip"
 								data-bs-placement="top" title="Editar"></i>
 
-						</a> <a class="btn btn-outline-danger btn-sm" title="Excluir"
-							data-bs-toggle="modal" data-bs-target="#confirmacaoExclusaoModal"
+						</a> <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+							data-bs-target="#confirmacaoExclusaoModal"
 							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
 								<!-- title="Excluir" rel="tooltip" data-bs-placement="top" --> <i
 								class="bi bi-x-square-fill" data-bs-toggle="tooltip"
 								data-bs-placement="top" title="Excluir"></i>
+
+						</a> <a class="btn btn-outline-success btn-sm js-atualizar-status"
+							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"
+							th:if="${titulo.pendente}"> <i
+								class="bi bi-check2-square" data-bs-toggle="tooltip"
+								data-bs-placement="top" title="Recebido"></i>
 						</a></td>
 					</tr>
 

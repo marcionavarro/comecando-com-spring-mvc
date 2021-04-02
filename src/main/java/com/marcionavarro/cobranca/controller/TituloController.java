@@ -28,7 +28,7 @@ public class TituloController {
 
 	@Autowired
 	private Titulos titulos;
-	
+
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
 
@@ -47,12 +47,12 @@ public class TituloController {
 		}
 
 		try {
-		titulos.save(titulo);
-		attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
-		return "redirect:/titulos/novo";
+			titulos.save(titulo);
+			attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
+			return "redirect:/titulos/novo";
 		} catch (IllegalArgumentException e) {
 			errors.rejectValue("dataVencimento", null, e.getMessage());
-			
+
 			return CADASTRO_VIEW;
 		}
 	}
@@ -68,19 +68,20 @@ public class TituloController {
 	@RequestMapping("{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Titulo titulo) {
 //		Titulo titulo = titulos.getOne(codigo);
-		
+
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(titulo);
 		return mv;
 	}
-	
-	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
-	public String excluir(@PathVariable Long codigo,  RedirectAttributes attributes) {
+
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
 		cadastroTituloService.excluir(codigo);
-		
+
 		attributes.addFlashAttribute("mensagem", "Titulo excluido com sucesso!");
 		return "redirect:/titulos";
 	}
+
 
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {

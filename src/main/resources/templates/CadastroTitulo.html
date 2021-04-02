@@ -15,8 +15,8 @@
 
 			<div th:replace="MensagemGeral"></div>
 			<div th:replace="MensagemErro"></div>
-			
-			<input type="hidden" th:field="*{codigo}"/>
+
+			<input type="hidden" th:field="*{codigo}" />
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between">
@@ -41,14 +41,19 @@
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="dataVencimento"
 								th:field="*{dataVencimento}"
-								th:classappend="${#fields.hasErrors('dataVencimento')} ? 'is-invalid'">
+								th:classappend="${#fields.hasErrors('dataVencimento')} ? 'is-invalid'"
+								data-provide="datepicker" data-date-format="dd/mm/yyyy"
+								data-date-language="pt-BR" data-date-autoclose="true"
+								data-date-today-Highlight="true" data-date-orientation="bottom auto"
+								autocomplete="off">
 						</div>
 					</div>
 
 					<div class="mb-3 row">
 						<label for="valor" class="col-sm-2 col-form-label">Valor</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="valor" th:field="*{valor}"
+							<input type="text" class="form-control" id="valor"
+								th:field="*{valor}"
 								th:classappend="${#fields.hasErrors('valor')} ? 'is-invalid'">
 						</div>
 					</div>

@@ -19,10 +19,15 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+	return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-/*$(function(){
-	$('[rel="tooltip"]').tooltip();
-});*/
+$(function() {
+	//$('[rel="tooltip"]').tooltip();
+	$('.js-currency').maskMoney({
+		decimal: ',',
+		thousands: '.',
+		allowZero: true,
+	});
+});

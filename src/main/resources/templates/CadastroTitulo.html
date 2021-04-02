@@ -52,7 +52,7 @@
 					<div class="mb-3 row">
 						<label for="valor" class="col-sm-2 col-form-label">Valor</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="valor"
+							<input type="text" class="form-control js-currency" id="valor"
 								th:field="*{valor}"
 								th:classappend="${#fields.hasErrors('valor')} ? 'is-invalid'">
 						</div>

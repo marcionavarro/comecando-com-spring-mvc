@@ -8,7 +8,7 @@
 	data-bs-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
-		<form th:attr="data-url-base='/titulos'" method="POST" th:method="DELETE">
+		<form th:attr="data-url-base=@{/titulos}"  th:method="DELETE">
 
 			<div class="modal-content">
 				<div class="modal-header">

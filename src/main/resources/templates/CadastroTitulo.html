@@ -10,7 +10,7 @@
 
 <section layout:fragment="conteudo">
 	<div class="container">
-		<form action="/titulos" method="POST" class="form-horizontal"
+		<form th:action="@{/titulos}" method="POST" class="form-horizontal"
 			th:object="${titulo}">
 
 			<div th:replace="MensagemGeral"></div>
@@ -21,7 +21,7 @@
 			<div class="card">
 				<div class="card-header d-flex justify-content-between">
 					<h5>Novo Titulo</h5>
-					<a href="/titulos" class="text-decoration-none">Voltar para
+					<a th:href="@{/titulos}" class="text-decoration-none">Voltar para
 						Pesquisa</a>
 				</div>
 

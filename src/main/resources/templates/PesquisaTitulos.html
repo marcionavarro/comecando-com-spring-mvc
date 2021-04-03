@@ -17,12 +17,12 @@
 
 		<div class="card-header d-flex justify-content-between">
 			<h5>Pesquisa de Títulos</h5>
-			<a href="/titulos/novo" class="text-decoration-none">Novo Titulo</a>
+			<a th:href="@{/titulos/novo}" class="text-decoration-none">Novo Titulo</a>
 		</div>
 
 		<div class="card-body mt-3">
 
-			<form action="/titulos" method="GET" class="form-horizontal col-sm-4"
+			<form th:action="@{/titulos}" method="GET" class="form-horizontal col-sm-4"
 				th:object="${filtro}">
 				<div class="input-group input-group-sm mb-3">
 					<input class="form-control" Placeholder="Pesquisar Descrição"

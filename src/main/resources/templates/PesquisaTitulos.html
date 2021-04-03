@@ -1,15 +1,16 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="~{LayoutPadrao}">
 
 <head>
 <title>Pesquisa de Títulos</title>
+
+<!-- Required meta tags -->
 <meta charset="utf-8">
 </head>
 
 <section layout:fragment="conteudo">
-	<!--  <div class="container"></div> -->
 
 	<div th:replace="MensagemGeral"></div>
 
@@ -17,18 +18,19 @@
 
 		<div class="card-header d-flex justify-content-between">
 			<h5>Pesquisa de Títulos</h5>
-			<a th:href="@{/titulos/novo}" class="text-decoration-none">Novo Titulo</a>
+			<a th:href="@{/titulos/novo}" class="text-decoration-none">Novo
+				Titulo</a>
 		</div>
 
 		<div class="card-body mt-3">
 
-			<form th:action="@{/titulos}" method="GET" class="form-horizontal col-sm-4"
-				th:object="${filtro}">
+			<form th:action="@{/titulos}" method="GET"
+				class="form-horizontal col-sm-4" th:object="${filtro}">
 				<div class="input-group input-group-sm mb-3">
 					<input class="form-control" Placeholder="Pesquisar Descrição"
-						aria-label="Pesquisar Descrição" aria-describedby="inputGroup-sizing-sm"
-						th:field="*{descricao}"> <span class="input-group-text"
-						id="inputGroup-sizing-sm">
+						aria-label="Pesquisar Descrição"
+						aria-describedby="inputGroup-sizing-sm" th:field="*{descricao}">
+					<span class="input-group-text" id="inputGroup-sizing-sm">
 						<button type="submit" class="btn btn-sm">
 							<i class="bi bi-search"></i>
 						</button>
@@ -36,59 +38,61 @@
 				</div>
 			</form>
 
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th>Descrição</th>
-						<th class="text-center col-md-2">Data de Vencimento</th>
-						<th class="text-end col-md-2">Valor</th>
-						<th class="text-center col-md-2">Status</th>
-						<th class="col-md-1"></th>
-					</tr>
-				</thead>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md-1">#</th>
+							<th>Descrição</th>
+							<th class="text-center col-md-2">Data de Vencimento</th>
+							<th class="text-end col-md-2">Valor</th>
+							<th class="text-center col-md-2">Status</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
 
-				<tbody>
-					<tr th:each="titulo : ${titulos}">
-						<td class="text-center" th:text="${titulo.codigo}">1</td>
-						<td th:text="${titulo.descricao}"></td>
-						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
-						<td class="text-end" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center" th:attr="data-role=${titulo.codigo}">
-							<span class="badge" th:text="${titulo.status.descricao}"
-							th:classappend="${titulo.pendente ? 'bg-danger' : 'bg-success'}">
-								pendente </span>
-						</td>
-						<td class="text-center"><a
-							class="btn btn-outline-primary btn-sm"
-							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
-								class="bi bi-pencil-fill" data-bs-toggle="tooltip"
-								data-bs-placement="top" title="Editar"></i>
+					<tbody>
+						<tr th:each="titulo : ${titulos}">
+							<td class="text-center" th:text="${titulo.codigo}">1</td>
+							<td th:text="${titulo.descricao}"></td>
+							<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
+							<td class="text-end" th:text="|R$ ${{titulo.valor}}|"></td>
+							<td class="text-center" th:attr="data-role=${titulo.codigo}">
+								<span class="badge" th:text="${titulo.status.descricao}"
+								th:classappend="${titulo.pendente ? 'bg-danger' : 'bg-success'}">
+									pendente </span>
+							</td>
+							<td class="text-center"><a
+								class="btn btn-outline-primary btn-sm"
+								th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
+									class="bi bi-pencil-fill" data-bs-toggle="tooltip"
+									data-bs-placement="top" title="Editar"></i>
 
-						</a> <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-							data-bs-target="#confirmacaoExclusaoModal"
-							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
-								<!-- title="Excluir" rel="tooltip" data-bs-placement="top" --> <i
-								class="bi bi-x-square-fill" data-bs-toggle="tooltip"
-								data-bs-placement="top" title="Excluir"></i>
+							</a> <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+								data-bs-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
+									<!-- title="Excluir" rel="tooltip" data-bs-placement="top" -->
+									<i class="bi bi-x-square-fill" data-bs-toggle="tooltip"
+									data-bs-placement="top" title="Excluir"></i>
 
-						</a> <a class="btn btn-outline-success btn-sm js-atualizar-status"
-							th:attr="data-codigo=${titulo.codigo}"
-							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"
-							th:if="${titulo.pendente}"> <i class="bi bi-check2-square"
-								data-bs-toggle="tooltip" data-bs-placement="top"
-								title="Recebido"></i>
-						</a></td>
-					</tr>
+							</a> <a class="btn btn-outline-success btn-sm js-atualizar-status"
+								th:attr="data-codigo=${titulo.codigo}"
+								th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"
+								th:if="${titulo.pendente}"> <i class="bi bi-check2-square"
+									data-bs-toggle="tooltip" data-bs-placement="top"
+									title="Recebido"></i>
+							</a></td>
+						</tr>
 
-					<tr>
-						<th colspan="6"
-							class="fs-3 text-white text-center text-capitalize bg-dark  bg-gradient"
-							th:if="${#lists.isEmpty(titulos)}">Nenhum título foi
-							encontrado!</th>
-					</tr>
-				</tbody>
-			</table>
+						<tr>
+							<th colspan="6"
+								class="fs-3 text-white text-center text-capitalize bg-dark  bg-gradient"
+								th:if="${#lists.isEmpty(titulos)}">Nenhum título foi
+								encontrado!</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
 		<div th:replace="DialogoConfirmacaoExclusao"></div>

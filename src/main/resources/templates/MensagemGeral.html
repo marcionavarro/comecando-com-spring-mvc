@@ -1,12 +1,6 @@
-<!doctype html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
 <div class="alert alert-success alert-dismissible fade show"
 	role="alert" th:if="!${#strings.isEmpty(mensagem)}">
 	<span th:text="${mensagem}"></span>
 	<button type="button" class="btn-close" data-bs-dismiss="alert"
 		aria-label="Close"></button>
 </div>
-
-</html>

@@ -21,6 +21,21 @@
 		</div>
 
 		<div class="card-body mt-3">
+
+			<form action="/titulos" method="GET" class="form-horizontal col-sm-4"
+				th:object="${filtro}">
+				<div class="input-group input-group-sm mb-3">
+					<input class="form-control" Placeholder="Pesquisar Descrição"
+						aria-label="Pesquisar Descrição" aria-describedby="inputGroup-sizing-sm"
+						th:field="*{descricao}"> <span class="input-group-text"
+						id="inputGroup-sizing-sm">
+						<button type="submit" class="btn btn-sm">
+							<i class="bi bi-search"></i>
+						</button>
+					</span>
+				</div>
+			</form>
+
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>

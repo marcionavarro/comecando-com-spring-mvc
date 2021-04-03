@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.marcionavarro.cobranca.model.StatusTitulo;
 import com.marcionavarro.cobranca.model.Titulo;
 import com.marcionavarro.cobranca.repository.Titulos;
+import com.marcionavarro.cobranca.repository.filter.TituloFilter;
 import com.marcionavarro.cobranca.service.CadastroTituloService;
 
 @Controller
@@ -27,12 +29,10 @@ public class TituloController {
 
 	private static final String CADASTRO_VIEW = "CadastroTitulo";
 
-	@Autowired
-	private Titulos titulos;
 
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
-
+	
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
@@ -48,7 +48,7 @@ public class TituloController {
 		}
 
 		try {
-			titulos.save(titulo);
+			cadastroTituloService.salvar(titulo);
 			attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
 			return "redirect:/titulos/novo";
 		} catch (IllegalArgumentException e) {
@@ -59,8 +59,9 @@ public class TituloController {
 	}
 
 	@RequestMapping
-	public ModelAndView pesquisar() {
-		List<Titulo> todosTitulos = titulos.findAll();
+	public ModelAndView pesquisar(@ModelAttribute("filtro") TituloFilter filtro) {
+		List<Titulo> todosTitulos = cadastroTituloService.filtrar(filtro);
+		
 		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("titulos", todosTitulos);
 		return mv;
